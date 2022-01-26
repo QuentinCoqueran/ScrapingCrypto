@@ -3,7 +3,7 @@
 import requests
 import json
 
-class ApiCalls : 
+class RequestManager : 
 
     def __init__(self, _api_url) :
         self.api_url = _api_url
