@@ -1,9 +1,13 @@
 # coding: utf-8
-import api.call
+
+from api.call import ApiCalls
 
 def main():
-    print(api.call.get_vs_currencies())
-    pass
+
+    api_url = "https://api.coingecko.com/api/v3/"
+    api = ApiCalls(api_url)
+    print(api.get_vs_currencies())
+    
 
 if __name__ == '__main__':
     main()

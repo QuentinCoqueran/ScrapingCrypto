@@ -2,11 +2,11 @@
 
 import requests
 import json
+
 class ApiCalls : 
 
-    api_url = "https://api.coingecko.com/api/v3/"
-
-    def __init__(self, API_URL) :
+    def __init__(self, _api_url) :
+        self.api_url = _api_url
 
 
     def get_vs_currencies(self) :

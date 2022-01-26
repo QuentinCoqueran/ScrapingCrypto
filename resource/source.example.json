@@ -1,0 +1,14 @@
+{
+    "source_currency" : {
+        "name" : "nameexample",
+        "code" : "codeexample"
+    },
+    "crypto" : [
+        {
+            "id" : "idexample",
+            "value" : true,
+            "value_1" : false,
+            "value_2" : false
+        }
+    ]
+}
