@@ -8,6 +8,5 @@ def main():
     api = RequestManager(api_url)
     print(api.get_vs_currencies())
     
-
 if __name__ == '__main__':
     main()
