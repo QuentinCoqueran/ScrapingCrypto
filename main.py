@@ -1,12 +1,10 @@
 # coding: utf-8
 
 from api.RequestManager import RequestManager
+from input import menu_action
 
 def main():
-
-    api_url = "https://api.coingecko.com/api/v3/"
-    api = RequestManager(api_url)
-    print(api.get_vs_currencies())
+    menu_action()
     
 if __name__ == '__main__':
     main()

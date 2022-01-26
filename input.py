@@ -1,22 +1,42 @@
-def menu() :
+# coding: utf-8
 
-    print ("""
+from api.RequestManager import RequestManager
+
+
+def menu() :
+    menu = """
     1.Rechercher une cryptomonnaie
     2.Configuration
-    """)
-    userchoice=int(input("Que souhaitez-vous faire ?"))
+    3.Quitter
 
-    if userchoice==1 : 
-        crypto = input("\n Quelle cryptomonnaie cherchez-vous ?")
-        if crypto == "" : 
-            print("\n Saisie invalide")
-        return crypto
+    Votre choix : 
+    """
+    return int(input(menu))
 
-    elif userchoice==2 :
-        print("\n Configuration") 
 
-    elif userchoice !="" :
-        print("\n Votre choix n'est pas valide") 
-        menu()
+def menu_action():
+    choice = menu()
+    while(choice != 0) :
+        if(choice == 1):
+            search()
+            pass
+        elif(choice == 2):
+        
+            break
+        
+        else :
+            print("\n choix incorrect")
+            choice = menu()
 
-menu()
+def search_input():
+    query = input("\n Quelle cryptomonnaie cherchez-vous ? : ")
+    while(query == None):
+        print("\n Erreur")
+        query = input("\n Quelle cryptomonnaie cherchez-vous ? : ")
+    return query
+
+def search():
+    # TODO : Refactor appel reccurent vers RequestManager
+    query = search_input()
+    r = RequestManager("https://api.coingecko.com/api/v3/")
+    r.search_currencies(query)

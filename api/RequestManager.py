@@ -2,6 +2,7 @@
 
 import requests
 import json
+import api.custom_parser
 
 class RequestManager : 
 
@@ -22,21 +23,21 @@ class RequestManager :
             response = requests.get(url)
             content = json.loads(response.content.decode('utf-8'))
             return content
-        except requests.exceptions.RequestException :
-            raise
+        except Exception :
+            print("Mauvaise requete")
     
-    def search_currencies(self, user_input) :
+    def search_currencies(self, query) :
         """
         Recupère l'entrée de l'utilisateur et retourne les informations de la recherche
         
         Appel API retourne les infos de la recherche de l'utilisateur
         """
 
-        url = "{}search?query=".format(self.api_url)
+        url = "{0}search?query={1}".format(self.api_url, query.lower())
         try :
-            response = requests.get(url + user_input)
+            response = requests.get(url)
             content = json.loads(response.content.decode('utf-8'))
-            return content['coins'][0:3]
-        except requests.exceptions.RequestException :
-            raise
+            return api.custom_parser.parse_coin(content['coins'][0:3])
+        except Exception :
+            print("Aucun resultat")
 
