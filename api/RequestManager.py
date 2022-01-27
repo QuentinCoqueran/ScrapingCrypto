@@ -37,7 +37,10 @@ class RequestManager :
         try :
             response = requests.get(url)
             content = json.loads(response.content.decode('utf-8'))
-            return api.custom_parser.parse_coin(content['coins'][0:3])
+            coins = []
+            for coin_json in content['coins'][0:3] :
+                coins.append(api.custom_parser.parse_coin(coin_json))
+            return coins
         except Exception :
             print("Aucun resultat")
 
