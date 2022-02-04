@@ -4,14 +4,21 @@ import requests
 import json
 import api.custom_parser
 
-class RequestManager : 
 
-    api_url = ""
+class RequestManager:
 
-    def __init__(self, _api_url) :
-        self.api_url = _api_url
+    def __init__(self, api_url):
+        self.api_url = api_url
 
-    def get_vs_currencies(self) :
+    @property
+    def api_url(self):
+        return self.__api_url
+
+    @api_url.setter
+    def api_url(self, api_url):
+        self.__api_url = api_url
+
+    def get_vs_currencies(self):
         """
         Recupère les devises de comparaison
         
@@ -19,14 +26,14 @@ class RequestManager :
         """
 
         url = "{}simple/supported_vs_currencies".format(self.api_url)
-        try :
+        try:
             response = requests.get(url)
             content = json.loads(response.content.decode('utf-8'))
             return content
-        except Exception :
+        except Exception:
             print("Mauvaise requete")
-    
-    def search_currencies(self, query) :
+
+    def search_currencies(self, query):
         """
         Recupère l'entrée de l'utilisateur et retourne les informations de la recherche
         
@@ -34,13 +41,12 @@ class RequestManager :
         """
 
         url = "{0}search?query={1}".format(self.api_url, query.lower())
-        try :
+        try:
             response = requests.get(url)
             content = json.loads(response.content.decode('utf-8'))
             coins = []
-            for coin_json in content['coins'][0:3] :
+            for coin_json in content['coins'][0:3]:
                 coins.append(api.custom_parser.parse_coin(coin_json))
             return coins
-        except Exception :
+        except Exception:
             print("Aucun resultat")
-

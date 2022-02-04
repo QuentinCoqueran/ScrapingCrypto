@@ -2,29 +2,27 @@
 
 from input import menu, search_input
 
+
 class App:
 
-    requestManager = None
+    def __init__(self, request_manager):
+        self.requestManager = request_manager;
 
-    def __init__(self, _requestManager):
-        self.requestManager = _requestManager;
-
-    def start(self): 
+    def start(self):
         choice = menu()
-        while(choice != 0) :
-            if(choice == 1):
+        while choice != 0:
+            if choice == 1:
                 self.search()
                 pass
-            elif(choice == 2):
+            elif choice == 2:
                 break
-            else :
+            else:
                 print("\n choix incorrect")
                 choice = menu()
-    
+
     def search(self):
         query = search_input()
-        coins = self.requestManager.search_currencies(query)
-        for coin in coins : 
-            print(coin.name)
+        coins = self.request_manager.search_currencies(query)
+        for coin in coins:
+            print(coin.name, coin.symbol, coin.market_cap_rank)
         return coins
-

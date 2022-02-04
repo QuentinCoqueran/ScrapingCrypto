@@ -1,8 +1,5 @@
 # coding: utf-8
 
-from api.RequestManager import RequestManager
-
-
 def menu() :
     menu = """
     1.Rechercher une cryptomonnaie
