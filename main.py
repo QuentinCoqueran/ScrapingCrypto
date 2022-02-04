@@ -1,10 +1,12 @@
 # coding: utf-8
 
 from api.RequestManager import RequestManager
-from input import menu_action
+from App import App
 
 def main():
-    menu_action()
+    requestManager = RequestManager("https://api.coingecko.com/api/v3/")
+    app = App(requestManager)
+    app.start()
     
 if __name__ == '__main__':
     main()
