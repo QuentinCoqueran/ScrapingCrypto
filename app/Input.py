@@ -5,7 +5,7 @@ class Input:
 
     @staticmethod
     def menu():
-        menu_text = "\n1.Rechercher une cryptomonnaie\n2.Configuration\n3.Quitter\nVotre choix : "
+        menu_text = "\n1.Rechercher une cryptomonnaie\n2.Mes rapports\n3.Quitter\nVotre choix : "
         return int(input(menu_text))
 
     @staticmethod
@@ -18,7 +18,7 @@ class Input:
 
     @staticmethod
     def back():
-        text = "\nRevenir au menu precedent ? (O/n) : "
+        text = "\nRevenir au menu precedent ? O/n(n : Non, autre: Oui) : "
         if input(text) == "n":
             return False
         return True
