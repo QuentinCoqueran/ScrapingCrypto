@@ -1,15 +1,15 @@
 # coding: utf-8
 
-from input import menu, search_input
+from Input import Input
 
 
 class App:
 
     def __init__(self, request_manager):
-        self.requestManager = request_manager;
+        self.request_manager = request_manager
 
     def start(self):
-        choice = menu()
+        choice = Input.menu()
         while choice != 0:
             if choice == 1:
                 self.search()
@@ -18,11 +18,11 @@ class App:
                 break
             else:
                 print("\n choix incorrect")
-                choice = menu()
+                choice = Input.menu()
 
     def search(self):
-        query = search_input()
+        query = Input.search_input()
         coins = self.request_manager.search_currencies(query)
         for coin in coins:
-            print(coin.name, coin.symbol, coin.market_cap_rank)
+            print(coin)
         return coins

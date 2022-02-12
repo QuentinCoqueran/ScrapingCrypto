@@ -10,32 +10,35 @@ class Coin:
 
     @property
     def id(self):
-        return self.id
+        return self._id
 
     @id.setter
-    def id(self, _id):
-        self.id = _id
+    def id(self, id):
+        self._id = id
 
     @property
     def name(self):
-        return self.name
+        return self._name
 
     @name.setter
-    def name(self, _name):
-        self.name = _name
+    def name(self, name):
+        self._name = name
 
     @property
     def symbol(self):
-        return self.symbol
+        return self._symbol
 
     @symbol.setter
-    def symbol(self, _symbol):
-        self.symbol = _symbol
+    def symbol(self, symbol):
+        self._symbol = symbol
 
     @property
     def market_cap_rank(self):
-        return self.id
+        return self._market_cap_rank
 
     @market_cap_rank.setter
-    def market_cap_rank(self, _market_cap_rank):
-        self.market_cap_rank = _market_cap_rank
+    def market_cap_rank(self, market_cap_rank):
+        self._market_cap_rank = market_cap_rank
+
+    def __str__(self):
+        return "Coin : {}, {}, {}, {}".format(self.id, self.name, self.symbol, self.market_cap_rank)

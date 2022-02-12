@@ -2,7 +2,8 @@
 
 import requests
 import json
-import api.custom_parser
+
+from api.Parser import Parser
 
 
 class RequestManager:
@@ -20,33 +21,27 @@ class RequestManager:
 
     def get_vs_currencies(self):
         """
-        Recupère les devises de comparaison
-        
-        Appel API retourne la liste des devises
+        Return all the currencies available on the API
         """
-
         url = "{}simple/supported_vs_currencies".format(self.api_url)
         try:
             response = requests.get(url)
             content = json.loads(response.content.decode('utf-8'))
             return content
         except Exception:
-            print("Mauvaise requete")
+            print("Requête invalide")
 
     def search_currencies(self, query):
         """
-        Recupère l'entrée de l'utilisateur et retourne les informations de la recherche
-        
-        Appel API retourne les infos de la recherche de l'utilisateur
+        Take the user entry, make an API call and return the search results
         """
-
         url = "{0}search?query={1}".format(self.api_url, query.lower())
         try:
             response = requests.get(url)
             content = json.loads(response.content.decode('utf-8'))
             coins = []
-            for coin_json in content['coins'][0:3]:
-                coins.append(api.custom_parser.parse_coin(coin_json))
+            for coin in content['coins'][0:5]:  # TODO: Vérifier si on peut subir un out of range
+                coins.append(Parser.parse_coin(coin))
             return coins
         except Exception:
-            print("Aucun resultat")
+            print("Aucun résultat")
