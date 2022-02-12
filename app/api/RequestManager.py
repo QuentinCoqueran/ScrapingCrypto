@@ -3,7 +3,7 @@
 import requests
 import json
 
-from api.Parser import Parser
+from app.api.Parser import Parser
 
 
 class RequestManager:

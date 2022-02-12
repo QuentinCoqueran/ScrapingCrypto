@@ -5,7 +5,7 @@ class Input:
 
     @staticmethod
     def menu():
-        menu_text = "1.Rechercher une cryptomonnaie\n2.Configuration\n3.Quitter\nVotre choix : "
+        menu_text = "\n1.Rechercher une cryptomonnaie\n2.Configuration\n3.Quitter\nVotre choix : "
         return int(input(menu_text))
 
     @staticmethod
@@ -15,3 +15,10 @@ class Input:
             print("\nErreur")
             query = input("\nQuelle cryptomonnaie cherchez-vous ? : ")
         return query
+
+    @staticmethod
+    def back():
+        text = "\nRevenir au menu precedent ? (O/n) : "
+        if input(text) == "n":
+            return False
+        return True

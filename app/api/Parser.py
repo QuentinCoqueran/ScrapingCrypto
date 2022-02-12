@@ -1,4 +1,4 @@
-from model.Coin import Coin
+from app.model.Coin import Coin
 
 
 class Parser:

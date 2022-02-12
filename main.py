@@ -1,7 +1,7 @@
 # coding: utf-8
 
-from api.RequestManager import RequestManager
-from App import App
+from app.api.RequestManager import RequestManager
+from app.App import App
 
 
 def main():

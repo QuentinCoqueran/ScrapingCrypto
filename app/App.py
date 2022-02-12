@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from Input import Input
+from app.Input import Input
 
 
 class App:
@@ -13,11 +13,12 @@ class App:
         while choice != 0:
             if choice == 1:
                 self.search()
+                if Input.back() : choice = 10
                 pass
             elif choice == 2:
                 break
             else:
-                print("\n choix incorrect")
+                # print("\n choix incorrect")
                 choice = Input.menu()
 
     def search(self):
