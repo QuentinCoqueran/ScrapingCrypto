@@ -27,3 +27,11 @@ class Input:
         if input(text) == "n":
             return False
         return True
+
+    @staticmethod
+    def search_currency() : 
+        query = input("\nQuelle devise choisissez-vous ? : ")
+        while query is None:
+            print("\nErreur")
+            query = input("\nQuelle devise choisissez-vous ? : ")
+        return query

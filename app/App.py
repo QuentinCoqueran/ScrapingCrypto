@@ -1,5 +1,6 @@
 # coding: utf-8
 
+from sys import displayhook
 from app.Input import Input
 from app.model.Report import Report
 
@@ -29,6 +30,7 @@ class App:
             if choice == 1:
                 break
             elif choice == 2:
+                self.generate_report()
                 # TODO : Creer un fichier rapport Json
                 break
             elif choice == 3:
@@ -38,12 +40,15 @@ class App:
                 choice = Input.report_menu()
         return 10
 
-    def search(self):
+    def search_coins(self):
         query = Input.search_input()
-        coins = self.request_manager.search_currencies(query)
-        for coin in coins:
-            print(coin)
+        coins = self.request_manager.search_coins(query)
         return coins
+
+    def search_currencies(self):
+        query = Input.search_input()
+        currencies = self.request_manager.get_currencies(query)
+        return currencies
 
 
     def generate_report(self):
@@ -52,6 +57,12 @@ class App:
         name = ""
         # TODO : choose coins
         # TODO : choose currencies
-
+        self.display_currency()
         report = Report(name, coins, currencies)
         print(report)
+
+
+    def display_currency(self) :
+        list_currencies = self.search_currencies()
+        for key, value in enumerate(list_currencies) : 
+            print(key,value)
