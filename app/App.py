@@ -1,6 +1,5 @@
 # coding: utf-8
 
-from sys import displayhook
 from app.Input import Input
 from app.model.Report import Report
 
@@ -14,7 +13,7 @@ class App:
         choice = Input.menu()
         while choice != 0:
             if choice == 1:
-                self.search()
+                self.display_all_coins(self.search_coins())
                 if Input.back():
                     choice = 10
                 pass
@@ -46,10 +45,8 @@ class App:
         return coins
 
     def search_currencies(self):
-        query = Input.search_input()
-        currencies = self.request_manager.get_currencies(query)
+        currencies = self.request_manager.get_currencies()
         return currencies
-
 
     def generate_report(self):
         coins = []
@@ -61,8 +58,13 @@ class App:
         report = Report(name, coins, currencies)
         print(report)
 
-
     def display_currency(self) :
         list_currencies = self.search_currencies()
-        for key, value in enumerate(list_currencies) : 
-            print(key,value)
+        for key, value in enumerate(list_currencies) :
+            print(key, value.short_name)
+        choice = list_currencies[int(Input.search_currency())]
+        print(choice)
+
+    def display_all_coins(self, coins):
+        for coin in coins :
+            print(coin)
