@@ -26,8 +26,11 @@ class RequestManager:
         url = "{}simple/supported_vs_currencies".format(self.api_url)
         try:
             response = requests.get(url)
+            currencies = []
             content = json.loads(response.content.decode('utf-8'))
-            return content
+            for currency in content:
+                currencies.append(Parser.parse_vs_currencies(currency))
+            return currencies
         except Exception:
             print("Requête invalide")
 
