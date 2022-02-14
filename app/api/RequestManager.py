@@ -19,7 +19,7 @@ class RequestManager:
     def api_url(self, api_url):
         self.__api_url = api_url
 
-    def get_vs_currencies(self):
+    def get_currencies(self):
         """
         Return all the currencies available on the API
         """
@@ -34,7 +34,7 @@ class RequestManager:
         except Exception:
             print("Requête invalide")
 
-    def search_currencies(self, query):
+    def search_coins(self, query):
         """
         Take the user entry, make an API call and return the search results
         """
