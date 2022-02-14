@@ -41,4 +41,5 @@ class Coin:
         self._market_cap_rank = market_cap_rank
 
     def __str__(self):
-        return "Coin : {}, {}, {}, {}".format(self.id, self.name, self.symbol, self.market_cap_rank)
+        return "{{\"id\": \"{}\",\"name\": \"{}\", \"symbol\": \"{}\", \"market_cap_rank\": \"{}\" }}"\
+            .format(self.id, self.name, self.symbol, self.market_cap_rank)
