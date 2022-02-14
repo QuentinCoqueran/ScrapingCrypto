@@ -1,6 +1,7 @@
 # coding: utf-8
 
 from app.Input import Input
+from app.model.Report import Report
 
 
 class App:
@@ -43,3 +44,14 @@ class App:
         for coin in coins:
             print(coin)
         return coins
+
+
+    def generate_report(self):
+        coins = []
+        currencies = []
+        name = ""
+        # TODO : choose coins
+        # TODO : choose currencies
+
+        report = Report(name, coins, currencies)
+        print(report)
