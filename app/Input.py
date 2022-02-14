@@ -9,6 +9,11 @@ class Input:
         return int(input(menu_text))
 
     @staticmethod
+    def report_menu():
+        menu_text = "\n1.Tous mes rapports\n2.Nouveau rapport\n3.Retour\nVotre choix : "
+        return int(input(menu_text))
+
+    @staticmethod
     def search_input():
         query = input("\nQuelle cryptomonnaie cherchez-vous ? : ")
         while query is None:

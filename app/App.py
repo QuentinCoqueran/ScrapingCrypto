@@ -13,13 +13,29 @@ class App:
         while choice != 0:
             if choice == 1:
                 self.search()
-                if Input.back() : choice = 10
+                if Input.back():
+                    choice = 10
                 pass
             elif choice == 2:
+                choice = self.report()
+            else:
+                print("\n choix incorrect")
+                choice = Input.menu()
+
+    def report(self):
+        choice = Input.report_menu()
+        while choice != 3:
+            if choice == 1:
+                break
+            elif choice == 2:
+                # TODO : Creer un fichier rapport Json
+                break
+            elif choice == 3:
                 break
             else:
-                # print("\n choix incorrect")
-                choice = Input.menu()
+                print("\n choix incorrect")
+                choice = Input.report_menu()
+        return 10
 
     def search(self):
         query = Input.search_input()
