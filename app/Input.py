@@ -29,7 +29,7 @@ class Input:
         return True
 
     @staticmethod
-    def search_currency() : 
+    def search_currency():
         query = input("\nQuel ID de devise voulez vous choisir ? : ")
         while query is None:
             print("\nErreur")

@@ -39,6 +39,10 @@ class App:
                 choice = Input.report_menu()
         return 10
 
+    def currency_choice(self):
+        # appelle la fonction qui affiche les currencies et qui retourne un int, e
+        pass
+
     def search_coins(self):
         query = Input.search_input()
         coins = self.request_manager.search_coins(query)
@@ -52,19 +56,31 @@ class App:
         coins = []
         currencies = []
         name = ""
-        # TODO : choose coins
-        # TODO : choose currencies
+        # TODO : créer une class ReportMenu.py dans lequel on a le menu de creation des report et les menu ci dessous
+        # TODO : appeller un menu qui va permettre de retourner une liste de coins 
+        # TODO : appeller un menu qui va permettre de retourner une liste de currency
         self.display_currency()
         report = Report(name, coins, currencies)
         print(report)
 
-    def display_currency(self) :
+    def choose_currency(self):
+        """
+        TODO : Decomposition de la feature ajout de currency dans le report : 
+        - récuperer les currencies
+        - passer les currencies en paramètre a une fonction qui va les afficher correctement en liste, avec index et retourne l'index
+        - depuis l'index, retourne la currencie choisie
+        """
         list_currencies = self.search_currencies()
-        for key, value in enumerate(list_currencies) :
+        for key, value in enumerate(list_currencies):
             print(key, value.short_name)
         choice = list_currencies[int(Input.search_currency())]
         print(choice)
 
-    def display_all_coins(self, coins):
-        for coin in coins :
-            print(coin)
+    def choose_coin(self):
+        """
+        TODO : Decomposition de la feature ajout de coin dans le report : 
+        - rechercher une coin
+        - passer les coin resultat en paramètre a une fonction qui va les afficher correctement en liste, avec index et retourne l'index
+        - depuis l'index, retourne la coin choisie
+        """
+        pass
