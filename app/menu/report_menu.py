@@ -1,6 +1,7 @@
 import json
 
 import config
+from app.json import writer
 from app.menu.menu import clearscreen, choose_menu, back
 from app.parser import parse_reports
 
@@ -25,29 +26,27 @@ class ReportMenu:
             return
         else:
             print("\nVotre choix est incorrect, Veuillez réessayer.")
-            self.start()
+            self.report_details_menu.report_edition_menu.start_create()
 
 
 class ReportDetailMenu:
 
     def __init__(self):
-        self.report_file = config.REPORT_FILE_NAME
         self.report_edition_menu = ReportEditionMenu()
+
+    # def save_file(self):
+    #     with open(config.REPORT_FILE_NAME) as f:
+    #         json.dump(self.reports, f)
 
     def start(self):
         clearscreen()
-        reports = self.get_all_reports()
+        reports = writer.get_all_reports()
         print("Tous mes rapports\n")
         for idx, report in enumerate(reports):
             print(f'{idx}. {report.name}')
-        choice = choose_menu("Rapport", len(reports))
-        self.show_report_details(reports[choice])
-        self.report_detail_menu(reports[choice])
-
-    def get_all_reports(self):
-        with open(self.report_file) as f:
-            val = json.load(f)
-            return parse_reports(val)
+        idx = choose_menu("Rapport", len(reports))
+        self.show_report_details(reports[idx])
+        self.report_detail_menu(idx)
 
     @staticmethod
     def show_report_details(report):
@@ -56,24 +55,48 @@ class ReportDetailMenu:
         print("Les cryptomonnaies : ", [f'{coin.name},' for coin in report.coins])
         print("Les monnaies de comparaisons : ", [f'{curr.short_name},' for curr in report.currencies])
 
-    def report_detail_menu(self, report):
-        menu_text = "\n1.Modifier le rapport\n2.Quitter\nVotre choix : "
+    def report_detail_menu(self, idx):
+        menu_text = "\n1.Modifier le rapport\n2.Supprimer le rapport\n3.Quitter\nVotre choix : "
         choice = int(input(menu_text))
         if choice == 1:
-            self.report_edition_menu.start_edit(report)
+            self.report_edition_menu.start_edit(idx)
         elif choice == 2:
+            return
+        elif choice == 3:
             return
         else:
             print("\nVotre choix est incorrect, Veuillez réessayer.")
-            self.report_detail_menu(report)
+            self.report_detail_menu(idx)
 
 
 class ReportEditionMenu:
 
-    def start_edit(self, report):
+    def start_edit(self, idx):
         clearscreen()
+        report = writer.get_report_by_idx(idx)
         ReportDetailMenu.show_report_details(report)
-        back()
+        menu_text = "\n1.Renommer le rapport\n2.Ajouter une cryptomonnaie\n3.Retirer une cryptomonnaie\n4.Ajouter une " \
+                    "monnaie\n5.Retirer une monnaie\n6.Sauvegarder et Quitter\n7.Annuler et quitter\nVotre choix : "
+        choice = int(input(menu_text))
+        if choice == 1:
+            report.name = 'nouveau'
+            writer.edit_report(idx, report)
+
+        elif choice == 2:
+            return
+        elif choice == 3:
+            pass
+        elif choice == 4:
+            pass
+        elif choice == 5:
+            pass
+        elif choice == 6:
+            pass
+        elif choice == 7:
+            pass
+        else:
+            print("\nVotre choix est incorrect, Veuillez réessayer.")
+            self.start_edit(report)
 
     def start_create(self):
         pass

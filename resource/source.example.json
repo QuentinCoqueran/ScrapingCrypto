@@ -1,4 +1,5 @@
 {
+    "name": "TEST",
     "coins" : [
         {
             "id" : "bitcoin",
@@ -15,10 +16,10 @@
     ],
     "currencies" : [
         {
-              "name": "eur"
+              "short_name": "eur"
         },
         {
-              "name": "dollar"
+              "short_name": "dollar"
         }
     ]
 }
