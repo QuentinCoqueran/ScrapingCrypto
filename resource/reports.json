@@ -1,0 +1,52 @@
+[
+  {
+    "name" : "Report 1",
+    "coins" : [
+        {
+            "id" : "bitcoin",
+            "name": "",
+            "symbol": "",
+            "market_cap_rank" : 1
+        },
+        {
+            "id" : "ethereum",
+            "name": "",
+            "symbol": "",
+            "market_cap_rank" : 1
+        }
+    ],
+    "currencies" : [
+        {
+              "name": "eur"
+        },
+        {
+              "name": "dollar"
+        }
+    ]
+  },
+  {
+    "name": "report2",
+    "coins" : [
+        {
+            "id" : "bitcoin",
+            "name": "",
+            "symbol": "",
+            "market_cap_rank" : 1
+        },
+        {
+            "id" : "ethereum",
+            "name": "",
+            "symbol": "",
+            "market_cap_rank" : 1
+        }
+    ],
+    "currencies" : [
+        {
+              "short_name": "eur"
+        },
+        {
+              "short_name": "dollar"
+        }
+    ]
+  }
+]

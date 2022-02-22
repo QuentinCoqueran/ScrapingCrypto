@@ -1,7 +1,8 @@
 # coding: utf-8
 import os
 
-from app.menu.menu import ReportMenu, CoinMenu, back, clearscreen
+from app.menu.menu import CoinMenu, back, clearscreen
+from app.menu.report_menu import ReportMenu
 
 
 class App:

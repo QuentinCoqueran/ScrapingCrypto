@@ -1,5 +1,7 @@
+import json
 import os
 
+import config
 from app.api.request_manager import request_manager
 
 
@@ -27,52 +29,12 @@ class CurrencyMenu:
     def choose_currency(self, currencies):
         clearscreen()
         self.display_currencies(currencies)
-        query = input("\nQuel ID de devise voulez vous choisir ? : ")
-        while query is None:
-            print("\nErreur")
-            query = input("\nQuel ID de devise voulez vous choisir ? : ")
-        return query
+        choose_menu("Monnaie", len(currencies))
 
     @staticmethod
     def display_currencies(currencies):
         for index, currency in enumerate(currencies):
             print(f'{index}. {currency.short_name}')
-
-
-class ReportMenu:
-
-    def start(self):
-        clearscreen()
-        menu_text = "\n1.Tous mes rapports\n2.Nouveau rapport\n3.Retour\nVotre choix : "
-        choice = int(input(menu_text))
-        if choice == 1:
-            self.my_reports()
-            self.start()
-        elif choice == 2:
-            self.new_report()
-            self.start()
-            # TODO : Créer un fichier rapport Json
-        elif choice == 3:
-            return
-        else:
-            print("\nVotre choix est incorrect, Veuillez réessayer.")
-            self.start()
-
-    @staticmethod
-    def my_reports():
-        print("\nTous mes rapports")
-
-    @staticmethod
-    def new_report():
-        print("-- Création d'un rapport --")
-
-
-class ReportDetailMenu:
-    pass
-
-
-class ReportGenerationMenu:
-    pass
 
 
 def back():
@@ -82,3 +44,11 @@ def back():
 
 def clearscreen():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+
+def choose_menu(source, size):
+    query = int(input(f'\n{source} -> votre choix : '))
+    while query is None or query < 0 or query > size:
+        print("\nVotre choix est invalide.")
+        query = int(input(f'\n{source} -> votre choix : '))
+    return query
