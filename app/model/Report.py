@@ -5,30 +5,6 @@ class Report:
         self.coins = coins
         self.currencies = currencies
 
-    @property
-    def name(self):
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        self._name = name
-
-    @property
-    def coins(self):
-        return self._coins
-
-    @coins.setter
-    def coins(self, coins):
-        self._coins = coins
-
-    @property
-    def currencies(self):
-        return self._currencies
-
-    @currencies.setter
-    def currencies(self, currencies):
-        self._currencies = currencies
-
     def add_coin(self, coin):
         self.coins.append(coin)
 
