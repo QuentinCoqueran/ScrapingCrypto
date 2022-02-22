@@ -1,7 +1,7 @@
 # coding: utf-8
+import os
 
-from app.Io import Input, Output
-from app.menu.menu import ReportMenu, CoinMenu, back
+from app.menu.menu import ReportMenu, CoinMenu, back, clearscreen
 
 
 class App:
@@ -11,6 +11,7 @@ class App:
         self.report_menu = ReportMenu()
 
     def start(self):
+        clearscreen()
         menu_text = "\n1.Rechercher une cryptomonnaie\n2.Mes rapports\n3.Quitter\nVotre choix : "
         choice = int(input(menu_text))
         if choice == 1:
@@ -24,9 +25,8 @@ class App:
             print("Execution terminée, Merci beaucoup.")
             exit(0)
         else:
-            print("\nVotre choix est incorrect, Veuillez réessayer.")
+            # print("\nVotre choix est incorrect, Veuillez réessayer.")
             self.start()
-
 
     # def currency_choice(self):
     #     # appelle la fonction qui affiche les currencies et qui retourne un int, e

@@ -1,3 +1,5 @@
+import os
+
 from app.api.request_manager import request_manager
 
 
@@ -5,6 +7,7 @@ class CoinMenu:
 
     @staticmethod
     def search_coins():
+        clearscreen()
         query = input("\nQuelle cryptomonnaie cherchez-vous ? : ")
         while query is None:
             print("\nErreur")
@@ -22,6 +25,7 @@ class CurrencyMenu:
 
     @staticmethod
     def choose_currency(self, currencies):
+        clearscreen()
         self.display_currencies(currencies)
         query = input("\nQuel ID de devise voulez vous choisir ? : ")
         while query is None:
@@ -38,6 +42,7 @@ class CurrencyMenu:
 class ReportMenu:
 
     def start(self):
+        clearscreen()
         menu_text = "\n1.Tous mes rapports\n2.Nouveau rapport\n3.Retour\nVotre choix : "
         choice = int(input(menu_text))
         if choice == 1:
@@ -62,6 +67,18 @@ class ReportMenu:
         print("-- Création d'un rapport --")
 
 
+class ReportDetailMenu:
+    pass
+
+
+class ReportGenerationMenu:
+    pass
+
+
 def back():
     text = "\nRevenir au menu precedent ? O/n (Oui) : "
     return input(text) != "n"
+
+
+def clearscreen():
+    os.system('cls' if os.name == 'nt' else 'clear')
