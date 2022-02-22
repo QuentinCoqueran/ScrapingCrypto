@@ -8,8 +8,8 @@ def parse_coin(coin_json):
     return coin_instance
 
 
-def parse_vs_currencies(currency_string):
-    currency_instance = Currency(currency_string)
+def parse_vs_currencies(currency_json):
+    currency_instance = Currency(currency_json['short_name'])
     return currency_instance
 
 

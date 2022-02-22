@@ -47,8 +47,13 @@ def clearscreen():
 
 
 def choose_menu(source, size):
-    query = int(input(f'\n{source} -> votre choix : '))
-    while query is None or query < 0 or query > size:
-        print("\nVotre choix est invalide.")
+    try:
         query = int(input(f'\n{source} -> votre choix : '))
-    return query
+        while query is None or query < 0 or query > size:
+            print("\nVotre choix est invalide.")
+            query = int(input(f'\n{source} -> votre choix : '))
+        return query
+    except Exception:
+        print("\nUne erreur est survenue, veuillez réessayer")
+        choose_menu(source, size)
+

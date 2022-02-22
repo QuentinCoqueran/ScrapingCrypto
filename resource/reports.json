@@ -4,28 +4,28 @@
     "coins" : [
         {
             "id" : "bitcoin",
-            "name": "",
+            "name": "Bitcoin",
             "symbol": "",
             "market_cap_rank" : 1
         },
         {
             "id" : "ethereum",
-            "name": "",
+            "name": "Ethereum",
             "symbol": "",
             "market_cap_rank" : 1
         }
     ],
     "currencies" : [
         {
-              "name": "eur"
+              "short_name": "eur"
         },
         {
-              "name": "dollar"
+              "short_name": "dollar"
         }
     ]
   },
   {
-    "name": "report2",
+    "name": "Report 2",
     "coins" : [
         {
             "id" : "bitcoin",
