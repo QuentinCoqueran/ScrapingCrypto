@@ -1,25 +1,52 @@
-{
-    "name": "TEST",
-    "coins" : [
-        {
-            "id" : "bitcoin",
-            "name": "",
-            "symbol": "",
-            "market_cap_rank" : 1
-        },
-        {
-            "id" : "ethereum",
-            "name": "",
-            "symbol": "",
-            "market_cap_rank" : 1
-        }
-    ],
-    "currencies" : [
-        {
-              "short_name": "eur"
-        },
-        {
-              "short_name": "dollar"
-        }
-    ]
-}
+[
+    {
+        "name": "TEST",
+        "coins" : [
+            {
+                "id" : "bitcoin",
+                "name": "",
+                "symbol": "",
+                "market_cap_rank" : 1
+            },
+            {
+                "id" : "ethereum",
+                "name": "",
+                "symbol": "",
+                "market_cap_rank" : 1
+            }
+        ],
+        "currencies" : [
+            {
+                  "short_name": "eur"
+            },
+            {
+                  "short_name": "dollar"
+            }
+        ]
+    },
+    {
+        "name": "TEST",
+        "coins" : [
+            {
+                "id" : "bitcoin",
+                "name": "",
+                "symbol": "",
+                "market_cap_rank" : 1
+            },
+            {
+                "id" : "ethereum",
+                "name": "",
+                "symbol": "",
+                "market_cap_rank" : 1
+            }
+        ],
+        "currencies" : [
+            {
+                  "short_name": "eur"
+            },
+            {
+                  "short_name": "dollar"
+            }
+        ]
+    }
+]
