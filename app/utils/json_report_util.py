@@ -18,11 +18,9 @@ def get_all_reports():
 
 
 def save_all_reports(reports):
-    print("reports ->", reports)
-    print("to dump ->", [str(report) for report in reports])
-    # with open(FILE_PATH, 'w') as outfile:
-    #     json_data = json.dumps([dict(report) for report in reports])
-    #     print(json_data)
+    with open(FILE_PATH, 'w') as f:
+        json_string = json.dumps(reports, default=lambda o: o.__dict__, indent=4)
+        f.write(json_string)
 
 
 def get_report_by_idx(idx):
@@ -46,4 +44,4 @@ def delete_report(idx):
     reports = get_all_reports()
     reports.pop(idx)
     save_all_reports(reports)
-
+    print("\nLe rapport à bien été supprimer.")

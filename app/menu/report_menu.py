@@ -1,9 +1,5 @@
-import json
-
-import config
-from app.json import writer
-from app.menu.menu import clearscreen, choose_menu, back
-from app.parser import parse_reports
+from app.utils import json_report_util
+from app.menu.menu import clearscreen, choose_menu, back, back_no_confirmation
 
 
 class ReportMenu:
@@ -34,19 +30,19 @@ class ReportDetailMenu:
     def __init__(self):
         self.report_edition_menu = ReportEditionMenu()
 
-    # def save_file(self):
-    #     with open(config.REPORT_FILE_NAME) as f:
-    #         json.dump(self.reports, f)
-
     def start(self):
         clearscreen()
-        reports = writer.get_all_reports()
-        print("Tous mes rapports\n")
-        for idx, report in enumerate(reports):
-            print(f'{idx}. {report.name}')
-        idx = choose_menu("Rapport", len(reports))
-        self.show_report_details(reports[idx])
-        self.report_detail_menu(idx)
+        reports = json_report_util.get_all_reports()
+        print("--  MES RAPPORTS --\n")
+        if len(reports):
+            for idx, report in enumerate(reports):
+                print(f'{idx}. {report.name}')
+            idx = choose_menu("Rapport", len(reports))
+            self.show_report_details(reports[idx])
+            self.report_detail_menu(idx)
+        else:
+            print("Aucun rapport disponible.")
+            back_no_confirmation()
 
     @staticmethod
     def show_report_details(report):
@@ -61,7 +57,9 @@ class ReportDetailMenu:
         if choice == 1:
             self.report_edition_menu.start_edit(idx)
         elif choice == 2:
-            return
+            json_report_util.delete_report(idx)
+            back_no_confirmation()
+            self.start()
         elif choice == 3:
             return
         else:
@@ -73,14 +71,14 @@ class ReportEditionMenu:
 
     def start_edit(self, idx):
         clearscreen()
-        report = writer.get_report_by_idx(idx)
+        report = json_report_util.get_report_by_idx(idx)
         ReportDetailMenu.show_report_details(report)
         menu_text = "\n1.Renommer le rapport\n2.Ajouter une cryptomonnaie\n3.Retirer une cryptomonnaie\n4.Ajouter une " \
                     "monnaie\n5.Retirer une monnaie\n6.Sauvegarder et Quitter\n7.Annuler et quitter\nVotre choix : "
         choice = int(input(menu_text))
         if choice == 1:
             report.name = 'nouveau'
-            writer.edit_report(idx, report)
+            json_report_util.edit_report(idx, report)
 
         elif choice == 2:
             return

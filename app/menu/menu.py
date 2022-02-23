@@ -42,11 +42,16 @@ def back():
     return input(text) != "n"
 
 
+def back_no_confirmation():
+    input("\nApuyez sur n'importe quelle touche pour revenir au menu précedent.")
+
+
 def clearscreen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def choose_menu(source, size):
+    # TODO : refactor pour gerer les erreurs (noneType et d'autres erreurs à tester
     try:
         query = int(input(f'\n{source} -> votre choix : '))
         while query is None or query < 0 or query > size:
@@ -56,4 +61,3 @@ def choose_menu(source, size):
     except Exception:
         print("\nUne erreur est survenue, veuillez réessayer")
         choose_menu(source, size)
-
