@@ -3,8 +3,8 @@
 import requests
 import json
 
+from app.utils.parser import parse_coin
 from app.model.Currency import Currency
-from app.parser import parse_coin, parse_vs_currencies
 import config
 
 

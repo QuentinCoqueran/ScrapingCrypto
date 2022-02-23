@@ -1,7 +1,7 @@
 import json
 
 import config
-from app.parser import parse_reports
+from app.utils.parser import parse_reports
 # TODO : penser a une refactor avec des décorateurs
 
 FILE_PATH = config.REPORT_FILE_NAME
