@@ -3,21 +3,14 @@
 import requests
 import json
 
-from app.api.Parser import Parser
+from app.parser import parse_coin, parse_vs_currencies
+import config
 
 
 class RequestManager:
 
-    def __init__(self, api_url):
-        self.api_url = api_url
-
-    @property
-    def api_url(self):
-        return self.__api_url
-
-    @api_url.setter
-    def api_url(self, api_url):
-        self.__api_url = api_url
+    def __init__(self):
+        self.api_url = config.COIN_API_URL
 
     def get_currencies(self):
         """
@@ -29,10 +22,10 @@ class RequestManager:
             currencies = []
             content = json.loads(response.content.decode('utf-8'))
             for currency in content:
-                currencies.append(Parser.parse_vs_currencies(currency))
+                currencies.append(parse_vs_currencies(currency))
             return currencies
-        except Exception:
-            print("Requête invalide")
+        except Exception as e:
+            print(e)
 
     def search_coins(self, query):
         """
@@ -44,7 +37,10 @@ class RequestManager:
             content = json.loads(response.content.decode('utf-8'))
             coins = []
             for coin in content['coins'][0:5]:  # TODO: Vérifier si on peut subir un out of range
-                coins.append(Parser.parse_coin(coin))
+                coins.append(parse_coin(coin))
             return coins
-        except Exception:
-            print("Aucun résultat")
+        except Exception as e:
+            print(e)
+
+
+request_manager = RequestManager()
