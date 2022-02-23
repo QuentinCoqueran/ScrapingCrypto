@@ -8,6 +8,12 @@ from app.api.request_manager import request_manager
 class CoinMenu:
 
     @staticmethod
+    def choose_coin():
+        coins = CoinMenu.search_coins()
+        CoinMenu.display_coins(coins)
+        return coins[choose_menu("Coin", len(coins))]
+
+    @staticmethod
     def search_coins():
         clearscreen()
         query = input("\nQuelle cryptomonnaie cherchez-vous ? : ")
@@ -26,10 +32,11 @@ class CoinMenu:
 class CurrencyMenu:
 
     @staticmethod
-    def choose_currency(self, currencies):
+    def choose_currency():
         clearscreen()
-        self.display_currencies(currencies)
-        choose_menu("Monnaie", len(currencies))
+        currencies = request_manager.get_currencies()
+        CurrencyMenu.display_currencies(currencies)
+        return currencies[choose_menu("Monnaie", len(currencies))]
 
     @staticmethod
     def display_currencies(currencies):

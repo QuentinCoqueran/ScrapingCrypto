@@ -1,5 +1,6 @@
+from app.model.Report import Report
 from app.utils import json_report_util
-from app.menu.menu import clearscreen, choose_menu, back, back_no_confirmation
+from app.menu.menu import clearscreen, choose_menu, back, back_no_confirmation, CoinMenu, CurrencyMenu
 
 
 class ReportMenu:
@@ -15,9 +16,7 @@ class ReportMenu:
             self.report_details_menu.start()
             self.start()
         elif choice == 2:
-            # self.new_report()
-            self.start()
-            # TODO : Créer un fichier rapport Json
+            CreateReportMenu.start()
         elif choice == 3:
             return
         else:
@@ -59,7 +58,7 @@ class ReportDetailMenu:
         elif choice == 2:
             json_report_util.delete_report(idx)
             back_no_confirmation()
-            self.start()
+            return
         elif choice == 3:
             return
         else:
@@ -107,3 +106,34 @@ class ReportEditionMenu:
 
     def edit_currencies(self):
         pass
+
+
+class CreateReportMenu:
+
+    @staticmethod
+    def start():
+        name = input("Nom du rapport : (Rapport) ") or "Rapport"
+        coins = CreateReportMenu.coin_menu()
+        currencies = CreateReportMenu.currency_menu()
+        json_report_util.append_report(Report(name, coins, currencies))
+
+    @staticmethod
+    def coin_menu():
+        coins = []
+        print("-- Les cryptomonnaies --")
+        adding = True
+        while adding:
+            print("Ajouter une cryptomonnaie au rapport : ")
+            coins.append(CoinMenu.choose_coin())
+            adding = input("Ajouter une autre cryptomonnaie ? (O/n) ") != "n"
+        return coins
+
+    @staticmethod
+    def currency_menu():
+        currencies = []
+        print("-- Les monnaies --")
+        adding = True
+        while adding:
+            currencies.append(CurrencyMenu.choose_currency())
+            adding = input("Ajouter une autre monnaie ? (O/n) ") != "n"
+        return currencies
