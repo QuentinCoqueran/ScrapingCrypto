@@ -18,10 +18,11 @@ def get_all_reports():
 
 
 def save_all_reports(reports):
-    with open(FILE_PATH, 'w') as outfile:
-        json_data = json.dumps([dict(report) for report in reports])
-        print(json_data)
-        #json.dump(json_data, outfile)
+    print("reports ->", reports)
+    print("to dump ->", [str(report) for report in reports])
+    # with open(FILE_PATH, 'w') as outfile:
+    #     json_data = json.dumps([dict(report) for report in reports])
+    #     print(json_data)
 
 
 def get_report_by_idx(idx):
