@@ -3,6 +3,7 @@
 import requests
 import json
 
+from app.model.Currency import Currency
 from app.parser import parse_coin, parse_vs_currencies
 import config
 
@@ -22,7 +23,7 @@ class RequestManager:
             currencies = []
             content = json.loads(response.content.decode('utf-8'))
             for currency in content:
-                currencies.append(parse_vs_currencies(currency))
+                currencies.append(Currency(currency))
             return currencies
         except Exception as e:
             print(e)
