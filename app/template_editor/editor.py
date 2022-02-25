@@ -10,4 +10,4 @@ def generate_template():
     template = env.get_template('template.html')
     string = template.render(title = 'TITRE', coins = coins, currencies = currencies)
     print(string)
-    # return string
+    # return string A TERME
