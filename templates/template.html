@@ -6,15 +6,18 @@
     <body>
         <h1>{{ title }}</h1>
         <table>
-            {% for currency in currencies %}
-                <thead> {{ currency.short_name }} </thead>
-            {% endfor %}
+            <thead> 
+                <th>Coins</th>
+                {% for currency in currencies %}
+                    <th>{{ currency.short_name }}</th> 
+                {% endfor %}
+            </thead>
             <tbody> 
                 {% for coin in coins %}
                     <tr>
                         <td>{{ coin.id }}</td>
                         {% for currency in currencies %}
-                            <td>{{ Prix par currency }}</td>
+                            <td>{{ Prix par currency }}</td> A MODIIER
                         {% endfor %}
                     </tr>
                 {% endfor %}
