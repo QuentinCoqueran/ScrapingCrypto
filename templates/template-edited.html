@@ -5,23 +5,23 @@
     </head>
     <body>
         <div class="container">
-            <h1>{{ title }}</h1>
+            <h1>TITRE</h1>
             <table class="table" >
                 <thead>
                     <th>Coins</th>
-                    {% for currency in currencies %}
-                        <th>{{ currency.short_name }}</th> 
-                    {% endfor %}
+                    
+                        <th>eur</th> 
+                    
                 </thead>
                 <tbody> 
-                    {% for coin in coins %}
+                    
                         <tr>
-                            <td>{{ coin.id }}</td>
-                            {% for currency in currencies %}
+                            <td>bitcoin</td>
+                            
                                 <td>Prix par currency</td> A MODIIER
-                            {% endfor %}
+                            
                         </tr>
-                    {% endfor %}
+                    
                 </tbody>
             </table>
         </div>
