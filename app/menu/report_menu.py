@@ -3,6 +3,7 @@ from app.utils import json_report_util
 from app.menu.menu import clearscreen, choose_menu, back, back_no_confirmation, CoinMenu, CurrencyMenu
 from app.template_editor.editor import generate_template
 from app.mail.send_mail import send_email
+from app.api.request_manager import request_manager
 
 
 class ReportMenu:
@@ -82,7 +83,6 @@ class CreateReportMenu:
             json_report_util.append_report(rep)
         else:
             json_report_util.edit_report(idx, rep)
-
 
     @staticmethod
     def coin_menu():
