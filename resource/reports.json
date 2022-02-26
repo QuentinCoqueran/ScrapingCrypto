@@ -1,15 +1,9 @@
 [
     {
-        "name": "Rapport",
+        "name": "Toto",
         "coins": [
             {
                 "id": "bitcoin",
-                "name": "Bitcoin",
-                "symbol": "BTC",
-                "market_cap_rank": 1
-            },
-            {
-                "id": "ethereum",
                 "name": "Bitcoin",
                 "symbol": "BTC",
                 "market_cap_rank": 1
@@ -18,14 +12,11 @@
         "currencies": [
             {
                 "short_name": "eur"
-            },
-            {
-                "short_name": "usd"
             }
         ]
     },
     {
-        "name": "Marwan",
+        "name": "Shan",
         "coins": [
             {
                 "id": "bitcoin",
@@ -38,6 +29,12 @@
                 "name": "Ethereum",
                 "symbol": "ETH",
                 "market_cap_rank": 2
+            },
+            {
+                "id": "dogecoin",
+                "name": "Dogecoin",
+                "symbol": "DOGE",
+                "market_cap_rank": 13
             }
         ],
         "currencies": [
@@ -45,7 +42,7 @@
                 "short_name": "eur"
             },
             {
-                "short_name": "xau"
+                "short_name": "usd"
             }
         ]
     }

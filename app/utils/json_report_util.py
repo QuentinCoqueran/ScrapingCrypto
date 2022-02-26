@@ -36,7 +36,9 @@ def append_report(report):
 
 def edit_report(idx, report_updated):
     reports = get_all_reports()
+    print("before save", reports)
     reports[idx] = report_updated
+    print("after save", reports)
     save_all_reports(reports)
 
 
