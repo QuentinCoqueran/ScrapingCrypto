@@ -7,11 +7,20 @@
                 "name": "Bitcoin",
                 "symbol": "BTC",
                 "market_cap_rank": 1
+            },
+            {
+                "id": "ethereum",
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "market_cap_rank": 1
             }
         ],
         "currencies": [
             {
                 "short_name": "eur"
+            },
+            {
+                "short_name": "usd"
             }
         ]
     },

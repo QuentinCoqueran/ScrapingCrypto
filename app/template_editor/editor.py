@@ -1,6 +1,7 @@
 from jinja2 import Environment, FileSystemLoader
 from app.utils.json_report_util import get_report_by_idx
 
+
 def generate_template(idx):
     report = get_report_by_idx(idx)
     coins = [coin for coin in report.coins]
@@ -8,7 +9,7 @@ def generate_template(idx):
     env = Environment(loader=FileSystemLoader('templates'))
 
     template = env.get_template('template.html')
-    string = template.render(title = 'TITRE', coins = coins, currencies = currencies)
+    string = template.render(title='TITRE', coins=coins, currencies=currencies)
     with open("templates/template-edited.html", 'w') as template:
         template.write(string)
     return string
