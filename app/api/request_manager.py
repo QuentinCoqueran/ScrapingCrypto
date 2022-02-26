@@ -43,5 +43,19 @@ class RequestManager:
         except Exception as e:
             print(e)
 
+    def get_coin_price_by_curr(self, report):
+        """
+        Return the price by coin in a currency
+        """
+        coins = ",".join([coin.id for coin in report.coins])
+        currencies = ",".join([curr.short_name for curr in report.currencies])
+        url = "{}simple/price?ids={}&vs_currencies={}".format(self.api_url, coins, currencies)
+        try:
+            response = requests.get(url)
+            content = json.loads(response.content.decode('utf-8'))
+            return content
+        except Exception as e:
+            print(e)
+
 
 request_manager = RequestManager()
