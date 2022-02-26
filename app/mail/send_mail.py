@@ -22,11 +22,9 @@ class Mail:
         service.quit()
 
 
-
-
-def send_email(content):
+def send_email(content, title):
     mails = input("Enter emails: ").split()
-    subject = input("Enter subject: ")
+    # subject = input("Enter subject: ")
     html_content = MIMEText(content, 'html')
     mail = Mail()
-    mail.send(mails, subject, html_content)
+    mail.send(mails, f"Votre rapport : {title}", html_content)

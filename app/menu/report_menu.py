@@ -4,6 +4,7 @@ from app.menu.menu import clearscreen, choose_menu, back, back_no_confirmation, 
 from app.template_editor.editor import generate_template
 from app.mail.send_mail import send_email
 from app.api.request_manager import request_manager
+from app.utils.json_report_util import get_report_by_idx
 
 
 class ReportMenu:
@@ -60,7 +61,8 @@ class ReportDetailMenu:
             back_no_confirmation()
             return
         elif choice == 3:
-            send_email(generate_template(idx))
+            report = get_report_by_idx(idx)
+            send_email(generate_template(report), report.name)
             print("\nEmail envoyé")
             back_no_confirmation()
         elif choice == 4:

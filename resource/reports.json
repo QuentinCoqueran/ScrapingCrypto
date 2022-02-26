@@ -45,5 +45,45 @@
                 "short_name": "usd"
             }
         ]
+    },
+    {
+        "name": "Plein de currency",
+        "coins": [
+            {
+                "id": "bitcoin",
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "market_cap_rank": 1
+            },
+            {
+                "id": "ethereum",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "market_cap_rank": 2
+            }
+        ],
+        "currencies": [
+            {
+                "short_name": "eth"
+            },
+            {
+                "short_name": "ltc"
+            },
+            {
+                "short_name": "bch"
+            },
+            {
+                "short_name": "bnb"
+            },
+            {
+                "short_name": "eos"
+            },
+            {
+                "short_name": "xrp"
+            },
+            {
+                "short_name": "xlm"
+            }
+        ]
     }
 ]
