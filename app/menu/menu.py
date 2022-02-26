@@ -68,3 +68,4 @@ def choose_menu(source, size):
     except Exception:
         print("\nUne erreur est survenue, veuillez réessayer")
         choose_menu(source, size)
+

@@ -1,6 +1,8 @@
 from app.model.Report import Report
 from app.utils import json_report_util
 from app.menu.menu import clearscreen, choose_menu, back, back_no_confirmation, CoinMenu, CurrencyMenu
+from app.template_editor.editor import generate_template
+from app.mail.send_mail import send_email
 
 
 class ReportMenu:
@@ -51,7 +53,7 @@ class ReportDetailMenu:
         print("Les monnaies de comparaisons : ", [f'{curr.short_name},' for curr in report.currencies])
 
     def report_detail_menu(self, idx):
-        menu_text = "\n1.Modifier le rapport\n2.Supprimer le rapport\n3.Quitter\nVotre choix : "
+        menu_text = "\n1.Modifier le rapport\n2.Supprimer le rapport\n3.Envoyer par Mail \n4.Quitter\nVotre choix : "
         choice = int(input(menu_text))
         if choice == 1:
             self.report_edition_menu.start_edit(idx)
@@ -60,6 +62,8 @@ class ReportDetailMenu:
             back_no_confirmation()
             return
         elif choice == 3:
+            send_email(generate_template(idx))
+        elif choice == 4:
             return
         else:
             print("\nVotre choix est incorrect, Veuillez réessayer.")

@@ -14,5 +14,30 @@
                 "short_name": "eur"
             }
         ]
+    },
+    {
+        "name": "Marwan",
+        "coins": [
+            {
+                "id": "bitcoin",
+                "name": "Bitcoin",
+                "symbol": "BTC",
+                "market_cap_rank": 1
+            },
+            {
+                "id": "ethereum",
+                "name": "Ethereum",
+                "symbol": "ETH",
+                "market_cap_rank": 2
+            }
+        ],
+        "currencies": [
+            {
+                "short_name": "eur"
+            },
+            {
+                "short_name": "xau"
+            }
+        ]
     }
 ]
