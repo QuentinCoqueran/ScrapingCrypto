@@ -1,131 +1,189 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <style>
-            @import "https://fonts.googleapis.com/css?family=Montserrat:300,400,700";
 
-            .rwd-table {
-                margin: 1em 0;
-                min-width: 900px;
-                margin-left: auto;
-                margin-right: auto;
-            }
+<head>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
 
-            .rwd-table tr {
-                border-top: 1px solid #ddd;
-                border-bottom: 1px solid #ddd;
-            }
+        body {
+            background-color: #3e94ec;
+            font-family: "Roboto", helvetica, arial, sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            text-rendering: optimizeLegibility;
+        }
 
-            .rwd-table th {
-                display: none;
-            }
+        div.table-title {
+            display: block;
+            margin: auto;
+            max-width: 600px;
+            padding: 5px;
+            width: 100%;
+        }
 
-            .rwd-table td {
-                display: block;
-            }
+        .table-title h3 {
+            color: #fafafa;
+            font-size: 30px;
+            font-weight: 400;
+            font-style: normal;
+            font-family: "Roboto", helvetica, arial, sans-serif;
+            text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+            text-transform: uppercase;
+        }
 
-            .rwd-table td:first-child {
-                padding-top: .5em;
-            }
 
-            .rwd-table td:last-child {
-                padding-bottom: .5em;
-            }
+        /*** Table Styles **/
 
-            .rwd-table td:before {
-                content: attr(data-th) ": ";
-                font-weight: bold;
-                width: 9.5em;
-                display: inline-block;
-            }
+        .table-fill {
+            background: white;
+            border-radius: 3px;
+            border-collapse: collapse;
+            height: 320px;
+            margin: auto;
+           
+            padding: 5px;
+            width: 100%;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            animation: float 5s infinite;
+        }
 
-            @media (min-width: 480px) {
-                .rwd-table td:before {
-                    display: none;
-                }
-            }
+        th {
+            color: #D5DDE5;
+            ;
+            background: #1b1e24;
+            border-bottom: 4px solid #9ea7af;
+            border-right: 1px solid #343a45;
+            font-size: 23px;
+            font-weight: 100;
+            padding: 24px;
+            text-align: left;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+            vertical-align: middle;
+        }
 
-            .rwd-table th, .rwd-table td {
-                text-align: left;
-            }
+        th:first-child {
+            border-top-left-radius: 3px;
+        }
 
-            @media (min-width: 480px) {
-                .rwd-table th, .rwd-table td {
-                    display: table-cell;
-                    padding: .25em .5em;
-                }
+        th:last-child {
+            border-top-right-radius: 3px;
+            border-right: none;
+        }
 
-                .rwd-table th:first-child, .rwd-table td:first-child {
-                    padding-left: 0;
-                }
+        tr {
+            border-top: 1px solid #C1C3D1;
+            border-bottom-: 1px solid #C1C3D1;
+            color: #666B85;
+            font-size: 16px;
+            font-weight: normal;
+            text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+        }
 
-                .rwd-table th:last-child, .rwd-table td:last-child {
-                    padding-right: 0;
-                }
-            }
+        tr:hover td {
+            background: #4E5066;
+            color: #FFFFFF;
+            border-top: 1px solid #22262e;
+        }
 
-            body {
-                padding: 0 2em;
-                font-family: Montserrat, sans-serif;
-                -webkit-font-smoothing: antialiased;
-                text-rendering: optimizeLegibility;
-                color: #444;
-                background: #eee;
-            }
+        tr:first-child {
+            border-top: none;
+        }
 
-            h1 {
-                font-weight: normal;
-                letter-spacing: -1px;
-                color: #34495E;
-            }
+        tr:last-child {
+            border-bottom: none;
+        }
 
-            .rwd-table {
-                background: #34495E;
-                color: #fff;
-                border-radius: .4em;
-                overflow: hidden;
-            }
+        tr:nth-child(odd) td {
+            background: #EBEBEB;
+        }
 
-            .rwd-table tr {
-                border-color: #46627f;
-            }
+        tr:nth-child(odd):hover td {
+            background: #4E5066;
+        }
 
-            .rwd-table th, .rwd-table td {
-                margin: .5em 1em;
-            }
+        tr:last-child td:first-child {
+            border-bottom-left-radius: 3px;
+        }
 
-            @media (min-width: 480px) {
-                .rwd-table th, .rwd-table td {
-                    padding: 1em !important;
-                }
-            }
+        tr:last-child td:last-child {
+            border-bottom-right-radius: 3px;
+        }
 
-            .rwd-table th, .rwd-table td:before {
-                color: #dd5;
-            }
+        td {
+            background: #FFFFFF;
+            padding: 20px;
+            text-align: left;
+            vertical-align: middle;
+            font-weight: 300;
+            font-size: 18px;
+            text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+            border-right: 1px solid #C1C3D1;
+        }
 
-        </style>
-    </head>
-    <body>
-    <div class="container">
-        <table class="rwd-table">
-            <thead>
-            <th>Coins</th>
+        td:last-child {
+            border-right: 0px;
+        }
+
+        th.text-left {
+            text-align: left;
+        }
+
+        th.text-center {
+            text-align: center;
+        }
+
+        th.text-right {
+            text-align: right;
+        }
+
+        td.text-left {
+            text-align: left;
+        }
+
+        td.text-center {
+            text-align: center;
+        }
+
+        td.text-right {
+            text-align: right;
+        }
+
+
+        .green-color {
+            color: green;
+        }
+
+        .red-color {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <table class="table-fill">
+        <thead>
+            <th text-left>Coins</th>
             {% for currency in currencies %}
-            <th>{{ currency.short_name }}</th>
+            <th text-left>{{ currency.short_name }}</th>
+            <th text-left>+/- 24h</th>
             {% endfor %}
-            </thead>
-            <tbody>
+        </thead>
+        <tbody class="table-hover">
             {% for coin in coins %}
-                <tr>
-                    <td><img src="{{ images[coin.id] }}" alt="thumb"> {{ coin.name }}</td>
-                    {% for curr_data in curr_datas %}
-                        <td>{{ curr_datas[curr_data][coin.id]['price'] }}{{ curr_datas[curr_data][coin.id]['24_change'] }}</td>
-                    {% endfor %}
-                </tr>
+            <tr>
+                <td class="text-left"><img src="{{ images[coin.id] }}" alt="thumb"> {{ coin.name }}</td>
+                {% for curr_data in curr_datas %}
+                <td class="text-left">{{ curr_datas[curr_data][coin.id]['price'] }}</td>
+                {% if curr_datas[curr_data][coin.id]['24_change'] > 0 %}
+                <td class="green-color text-left">{{ curr_datas[curr_data][coin.id]['24_change'] }} %</td>
+                {% else %}
+                <td class="red-color text-left">{{ curr_datas[curr_data][coin.id]['24_change'] }} %</td>
+                {% endif %}
+                {% endfor %}
+            </tr>
             {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    </body>
+        </tbody>
+    </table>
+</body>
+
 </html>
