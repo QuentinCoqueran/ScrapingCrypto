@@ -117,12 +117,12 @@
         </thead>
         <tbody>
         {% for coin in coins %}
-        <tr>
-            <td>{{ coin.name }}</td>
-            {% for currency in currencies %}
-            <td> {{ prices[coin.id][currency.short_name] }}</td>
-            {% endfor %}
-        </tr>
+            <tr>
+                <td><img src="{{ images[coin.id] }}" alt="thumb"> {{ coin.name }}</td>
+                {% for currency in currencies %}
+                    <td> {{ prices[coin.id][currency.short_name] }}</td>
+                {% endfor %}
+            </tr>
         {% endfor %}
         </tbody>
     </table>

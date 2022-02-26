@@ -57,5 +57,17 @@ class RequestManager:
         except Exception as e:
             print(e)
 
+    def get_coin_thumb_by_coin_id(self, coin_id):
+        """
+        Return the price by coin in a currency
+        """
+        url = "{}coins/{}".format(self.api_url, coin_id)
+        try:
+            response = requests.get(url)
+            content = json.loads(response.content.decode('utf-8'))
+            return content['image']['thumb']
+        except Exception as e:
+            print(e)
+
 
 request_manager = RequestManager()
