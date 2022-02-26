@@ -7,13 +7,13 @@ def generate_template(report):
     data = prepare_data(report)
     env = Environment(loader=FileSystemLoader('templates'))
     template = env.get_template('template.html')
-    string = template.render(coins=data[0], images=data[1], currencies=data[2], prices=data[3])
+    string = template.render(coins=data[0], images=data[1], currencies=data[2], curr_datas=data[3])
     return string
 
 
 def prepare_data(report):
-    prices = request_manager.get_coin_price_by_curr(report)
+    curr_datas = request_manager.get_coin_price_by_currencies(report)
     coins = [coin for coin in report.coins]
     currencies = [currency for currency in report.currencies]
     images = {coin.id: request_manager.get_coin_thumb_by_coin_id(coin.id) for coin in coins}
-    return [coins, images, currencies, prices]
+    return [coins, images, currencies, curr_datas]

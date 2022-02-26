@@ -1,131 +1,131 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <style>
-        @import "https://fonts.googleapis.com/css?family=Montserrat:300,400,700";
+    <head>
+        <style>
+            @import "https://fonts.googleapis.com/css?family=Montserrat:300,400,700";
 
-        .rwd-table {
-            margin: 1em 0;
-            min-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+            .rwd-table {
+                margin: 1em 0;
+                min-width: 900px;
+                margin-left: auto;
+                margin-right: auto;
+            }
 
-        .rwd-table tr {
-            border-top: 1px solid #ddd;
-            border-bottom: 1px solid #ddd;
-        }
+            .rwd-table tr {
+                border-top: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+            }
 
-        .rwd-table th {
-            display: none;
-        }
-
-        .rwd-table td {
-            display: block;
-        }
-
-        .rwd-table td:first-child {
-            padding-top: .5em;
-        }
-
-        .rwd-table td:last-child {
-            padding-bottom: .5em;
-        }
-
-        .rwd-table td:before {
-            content: attr(data-th) ": ";
-            font-weight: bold;
-            width: 9.5em;
-            display: inline-block;
-        }
-
-        @media (min-width: 480px) {
-            .rwd-table td:before {
+            .rwd-table th {
                 display: none;
             }
-        }
 
-        .rwd-table th, .rwd-table td {
-            text-align: left;
-        }
+            .rwd-table td {
+                display: block;
+            }
 
-        @media (min-width: 480px) {
+            .rwd-table td:first-child {
+                padding-top: .5em;
+            }
+
+            .rwd-table td:last-child {
+                padding-bottom: .5em;
+            }
+
+            .rwd-table td:before {
+                content: attr(data-th) ": ";
+                font-weight: bold;
+                width: 9.5em;
+                display: inline-block;
+            }
+
+            @media (min-width: 480px) {
+                .rwd-table td:before {
+                    display: none;
+                }
+            }
+
             .rwd-table th, .rwd-table td {
-                display: table-cell;
-                padding: .25em .5em;
+                text-align: left;
             }
 
-            .rwd-table th:first-child, .rwd-table td:first-child {
-                padding-left: 0;
+            @media (min-width: 480px) {
+                .rwd-table th, .rwd-table td {
+                    display: table-cell;
+                    padding: .25em .5em;
+                }
+
+                .rwd-table th:first-child, .rwd-table td:first-child {
+                    padding-left: 0;
+                }
+
+                .rwd-table th:last-child, .rwd-table td:last-child {
+                    padding-right: 0;
+                }
             }
 
-            .rwd-table th:last-child, .rwd-table td:last-child {
-                padding-right: 0;
+            body {
+                padding: 0 2em;
+                font-family: Montserrat, sans-serif;
+                -webkit-font-smoothing: antialiased;
+                text-rendering: optimizeLegibility;
+                color: #444;
+                background: #eee;
             }
-        }
 
-        body {
-            padding: 0 2em;
-            font-family: Montserrat, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeLegibility;
-            color: #444;
-            background: #eee;
-        }
+            h1 {
+                font-weight: normal;
+                letter-spacing: -1px;
+                color: #34495E;
+            }
 
-        h1 {
-            font-weight: normal;
-            letter-spacing: -1px;
-            color: #34495E;
-        }
+            .rwd-table {
+                background: #34495E;
+                color: #fff;
+                border-radius: .4em;
+                overflow: hidden;
+            }
 
-        .rwd-table {
-            background: #34495E;
-            color: #fff;
-            border-radius: .4em;
-            overflow: hidden;
-        }
+            .rwd-table tr {
+                border-color: #46627f;
+            }
 
-        .rwd-table tr {
-            border-color: #46627f;
-        }
-
-        .rwd-table th, .rwd-table td {
-            margin: .5em 1em;
-        }
-
-        @media (min-width: 480px) {
             .rwd-table th, .rwd-table td {
-                padding: 1em !important;
+                margin: .5em 1em;
             }
-        }
 
-        .rwd-table th, .rwd-table td:before {
-            color: #dd5;
-        }
+            @media (min-width: 480px) {
+                .rwd-table th, .rwd-table td {
+                    padding: 1em !important;
+                }
+            }
 
-    </style>
-</head>
-<body>
-<div class="container">
-    <table class="rwd-table">
-        <thead>
-        <th>Coins</th>
-        {% for currency in currencies %}
-        <th>{{ currency.short_name }}</th>
-        {% endfor %}
-        </thead>
-        <tbody>
-        {% for coin in coins %}
-            <tr>
-                <td><img src="{{ images[coin.id] }}" alt="thumb"> {{ coin.name }}</td>
-                {% for currency in currencies %}
-                    <td> {{ prices[coin.id][currency.short_name] }}</td>
-                {% endfor %}
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</div>
-</body>
+            .rwd-table th, .rwd-table td:before {
+                color: #dd5;
+            }
+
+        </style>
+    </head>
+    <body>
+    <div class="container">
+        <table class="rwd-table">
+            <thead>
+            <th>Coins</th>
+            {% for currency in currencies %}
+            <th>{{ currency.short_name }}</th>
+            {% endfor %}
+            </thead>
+            <tbody>
+            {% for coin in coins %}
+                <tr>
+                    <td><img src="{{ images[coin.id] }}" alt="thumb"> {{ coin.name }}</td>
+                    {% for curr_data in curr_datas %}
+                        <td>{{ curr_datas[curr_data][coin.id]['price'] }}{{ curr_datas[curr_data][coin.id]['24_change'] }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </body>
 </html>
