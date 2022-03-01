@@ -164,8 +164,8 @@
         <thead>
             <th text-left>Coins</th>
             {% for currency in currencies %}
-            <th text-left>{{ currency.short_name }}</th>
-            <th text-left>+/- 24h</th>
+                <th text-left>{{ currency.short_name }}</th>
+                <th text-left>+/- 24h</th>
             {% endfor %}
         </thead>
         <tbody class="table-hover">
@@ -173,12 +173,12 @@
             <tr>
                 <td class="text-left"><img src="{{ images[coin.id] }}" alt="thumb"> {{ coin.name }}</td>
                 {% for curr_data in curr_datas %}
-                <td class="text-left">{{ curr_datas[curr_data][coin.id]['price'] }}</td>
-                {% if curr_datas[curr_data][coin.id]['24_change'] > 0 %}
-                <td class="green-color text-left">{{ curr_datas[curr_data][coin.id]['24_change'] }} %</td>
-                {% else %}
-                <td class="red-color text-left">{{ curr_datas[curr_data][coin.id]['24_change'] }} %</td>
-                {% endif %}
+                    <td class="text-left">{{ curr_datas[curr_data][coin.id]['price'] }}</td>
+                    {% if curr_datas[curr_data][coin.id]['24_change'] > 0 %}
+                        <td class="green-color text-left">{{ curr_datas[curr_data][coin.id]['24_change'] }} %</td>
+                    {% else %}
+                        <td class="red-color text-left">{{ curr_datas[curr_data][coin.id]['24_change'] }} %</td>
+                    {% endif %}
                 {% endfor %}
             </tr>
             {% endfor %}

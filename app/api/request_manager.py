@@ -43,7 +43,6 @@ class RequestManager:
         except Exception as e:
             print(e)
 
-
     def get_coin_thumb_by_coin_id(self, coin_id):
         """
         Return the price by coin in a currency
@@ -55,14 +54,17 @@ class RequestManager:
             return content['image']['thumb']
         except Exception as e:
             print(e)
-    
+
     def get_coin_data(self, currency, coins):
-        
-        url = "{}coins/markets?vs_currency={}&ids={}&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h".format(self.api_url, currency.short_name, coins)
+
+        url = "{}coins/markets?vs_currency={}&ids={}&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h".format(
+            self.api_url, currency.short_name, coins)
         try:
             response = requests.get(url)
             content = json.loads(response.content.decode('utf-8'))
-            content = {coin_data['id'] : {'price' : coin_data['current_price'], '24_change' : coin_data['price_change_percentage_24h']} for coin_data in content}
+            content = {coin_data['id']: {'price': coin_data['current_price'],
+                                         '24_change': coin_data['price_change_percentage_24h']} for coin_data in
+                       content}
             return content
         except Exception as e:
             print(e)
@@ -74,5 +76,6 @@ class RequestManager:
         coins = ",".join([coin.id for coin in report.coins])
         currencies = {currency.short_name: self.get_coin_data(currency, coins) for currency in report.currencies}
         return currencies
-       
+
+
 request_manager = RequestManager()
